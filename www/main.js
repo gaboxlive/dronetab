@@ -434,13 +434,13 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"../drone/drone.module": [
+		"./src/app/drone/drone.module.ts",
+		"drone-drone-module"
+	],
 	"../tab1/tab1.module": [
 		"./src/app/tab1/tab1.module.ts",
 		"tab1-tab1-module"
-	],
-	"../tab2/tab2.module": [
-		"./src/app/tab2/tab2.module.ts",
-		"tab2-tab2-module"
 	],
 	"../tab3/tab3.module": [
 		"./src/app/tab3/tab3.module.ts",

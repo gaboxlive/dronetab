@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-dronetab',
+  selector: 'dronetab',
   templateUrl: 'drone.page.html',
   styleUrls: ['drone.page.scss']
 })

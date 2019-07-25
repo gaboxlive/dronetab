@@ -17,7 +17,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'drone',
+        path: 'dronetab',
         children: [
           {
             path: '',

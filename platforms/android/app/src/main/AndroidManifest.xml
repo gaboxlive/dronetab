@@ -25,6 +25,9 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+        <activity android:configChanges="orientation|screenSize" android:name="com.mirasense.scanditsdk.plugin.FullScreenPickerActivity" />
     </application>
     <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="28" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>
