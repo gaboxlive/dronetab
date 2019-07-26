@@ -622,6 +622,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
+/* harmony import */ var _providers_scanner_service_scanner_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./providers/scanner-service/scanner.service */ "./src/app/providers/scanner-service/scanner.service.ts");
+
 
 
 
@@ -644,12 +646,133 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_9__["FCM"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
+                _providers_scanner_service_scanner_service__WEBPACK_IMPORTED_MODULE_10__["ScannerServiceProvider"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/providers/scanner-service/scanner.service.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/providers/scanner-service/scanner.service.ts ***!
+  \**************************************************************/
+/*! exports provided: ScannerServiceProvider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScannerServiceProvider", function() { return ScannerServiceProvider; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ScannerServiceProvider = /** @class */ (function () {
+    function ScannerServiceProvider(zone) {
+        this.zone = zone;
+        this._contentTop = 0;
+        Scandit.License.setAppKey("AcUdeCTWOU8QCeCwCBcl05QwFCPbKhuZlz4qE3dd3BeEZbJib26KC6pJFNR3S8RIbkiS66tyOzBWDWFyU1sznqV8bJNUVePvMAZfX7pN/5DyTNhcpDg9FvJxl4w0fB49TFR7ry5urx/sZKG03kwX9PxsqGSsRcl73msGxaN/sKNsbw8ueVh64817r6VIVypIlVGSWLJkTRgbbBrSM09PymV4CHh9bwnDRmnBg+pTKAw3Wluvn3erb7wTXIhfZFoltVHLMeJ2BzwbdwcIv2wdRgpxnRwEZasqaGrHj49wWFXiImjXy2Omu11M46vPWX/uIlFQfutL2cn6bWaUaE81+zEQF8qqRWEKXkI2r5NwVOllUpX1sUrfY2xI/cIEUV9XiFMCBrhnRNuMUBG4pXMhdYtVjJu6ZBN/cSdn1DRUV8IRXyTEUVEb4+1XCa53RRoLimscavNwKAJ0LV1RvWIbPz9ms1h1WtjNa0I/6IdFLe2RS+ygJ1mDqh1tPYfiVzeJXkD+xQgsaH9hNuB26CiuLUp49L0Diy7uyxJKBbQfQnWV1mfaMttYly0hJmx73/cRofOLbpPIGZIgdwsx+7AZ5XGXc/1QA9Fam5W45FYVh8w5ruq8x/Fv4e9LAeD8S4tLBq8E5/0kds8DkckZ8LfjTPyqk6rK/KmFjuwc9M6jBMCTOz9k5KVMXXAiWE2+yJcWcOfojWfo3WI5hf6P9vYrhlSrzHIe9i7OTjy70OSfTBc+uLd92+8JS1+g0HWo8DNhQfOJ1tdPZKJJyQ84BaI3VqBxsr+ojBOyW8WKQMarBkaivYdB7zFc3hc6/4nZmjv6+EuicXeGGyKhMcO45GUJmK/VUlMP1b308XtFvRwEj1QOkE25lvu6FQlhaTRj4ni1YH8D0kqmXQKu7BgazhcTgsfdPSVDTVNeguNEGaIZuuEiHb/PLeYGiH4lV0fMqJPdsM+OkesAziawYYO/7j8v4U8iji5vusAvOmHtUv5VXs3TZcWEYIcAyWBKhwv7AdeEiPSz3uwEqDzFAd2exiW5n9j7T24W2vB3u7ovy4ZlBRP7dnmLTUymeLrA6aZnv0Im9a3DU0PvJ6/FB8EHqUJrY8b1FAkaiTlHDnLtf6xKi7XaaWuVHaBRT+y5jjjj++YzWDB+uv4VuliRhnWXQHHWZmzonHfV43Vtc4HANkU5sb1e/cM1Eeogbgk0Fv0=");
+        var settings = new Scandit.ScanSettings();
+        settings.setSymbologyEnabled(Scandit.Barcode.Symbology.EAN13, true);
+        // Instantiate the barcode picker by using the settings defined above.
+        this.picker = new Scandit.BarcodePicker(settings);
+    }
+    Object.defineProperty(ScannerServiceProvider.prototype, "contentTop", {
+        get: function () {
+            return this._contentTop;
+        },
+        set: function (newValue) {
+            this._contentTop = newValue;
+            this.setScannerConstraints();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ScannerServiceProvider.prototype.start = function () {
+        var _this = this;
+        // We only want to pause the scanner if not in continuous mode, not stop it, so we're setting it to true here
+        this.picker.continuousMode = true;
+        this.picker.show({
+            didScan: function (session) {
+                if (_this.delegate) {
+                    _this.zone.run(function () {
+                        _this.delegate.didScan(session);
+                    });
+                }
+            },
+        });
+        this.picker.startScanning();
+    };
+    ScannerServiceProvider.prototype.resume = function () {
+        this.picker.resumeScanning();
+    };
+    // ================================================ //
+    // ===== Constraint setting & related helpers ===== //
+    // ================================================ //
+    ScannerServiceProvider.prototype.setScannerConstraints = function () {
+        var top = this.contentTop;
+        if (top === undefined) {
+            setTimeout(this.setScannerConstraints.bind(this), 500);
+        }
+        var topConstraint = top || 0;
+        var rightConstraint = 0;
+        var bottomConstraint = screen.height / 4;
+        var leftConstraint = 0;
+        this.contentHeight = screen.height - bottomConstraint - topConstraint;
+        console.log(this.contentHeight, topConstraint, rightConstraint, bottomConstraint, leftConstraint);
+        this.setConstraints(topConstraint, rightConstraint, bottomConstraint, leftConstraint);
+    };
+    ScannerServiceProvider.prototype.setConstraints = function (top, right, bottom, left, animationDuration) {
+        if (animationDuration === void 0) { animationDuration = 0; }
+        var newConstraints = this.getConstraintsWith(top, right, bottom, left);
+        this.setPortraitConstraints(newConstraints, animationDuration);
+        this.setLandscapeConstraints(newConstraints, animationDuration);
+    };
+    ScannerServiceProvider.prototype.setPortraitConstraints = function (newConstraints, animationDuration) {
+        if (animationDuration === void 0) { animationDuration = 0; }
+        if (this.needsConstraintUpdates(this.portraitConstraints, newConstraints)) {
+            this.portraitConstraints = newConstraints;
+            this.applyConstraints(animationDuration);
+        }
+    };
+    ScannerServiceProvider.prototype.setLandscapeConstraints = function (newConstraints, animationDuration) {
+        if (animationDuration === void 0) { animationDuration = 0; }
+        if (this.needsConstraintUpdates(this.landscapeConstraints, newConstraints)) {
+            this.landscapeConstraints = newConstraints;
+            this.applyConstraints(animationDuration);
+        }
+    };
+    ScannerServiceProvider.prototype.getConstraintsWith = function (top, right, bottom, left, animationDuration) {
+        if (animationDuration === void 0) { animationDuration = 0; }
+        var newConstraints = new Scandit.Constraints();
+        newConstraints.topMargin = top;
+        newConstraints.rightMargin = right;
+        newConstraints.bottomMargin = bottom;
+        newConstraints.leftMargin = left;
+        return newConstraints;
+    };
+    ScannerServiceProvider.prototype.needsConstraintUpdates = function (constraint, newConstraints) {
+        return !constraint ||
+            newConstraints.topMargin !== constraint.topMargin ||
+            newConstraints.rightMargin !== constraint.rightMargin ||
+            newConstraints.bottomMargin !== constraint.bottomMargin ||
+            newConstraints.leftMargin !== constraint.leftMargin;
+    };
+    ScannerServiceProvider.prototype.applyConstraints = function (animationDuration) {
+        if (animationDuration === void 0) { animationDuration = 0; }
+        this.picker.setConstraints(this.portraitConstraints, this.landscapeConstraints, animationDuration);
+    };
+    ScannerServiceProvider = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
+    ], ScannerServiceProvider);
+    return ScannerServiceProvider;
 }());
 
 
